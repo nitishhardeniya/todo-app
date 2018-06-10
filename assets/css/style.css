@@ -1,0 +1,11 @@
+.item-container {
+	padding: 5px;
+}
+
+.item-list {
+	min-height: 70px;
+    border: 2px solid #00adff;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #ffffff;
+}
