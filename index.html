@@ -14,22 +14,50 @@
 </head>
 <body>
 
+	<ul class="nav justify-content-center">
+	  <li class="nav-item">
+	    <a class="nav-link active" href="#">Todo</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Done</a>
+	  </li>
+	</ul>
+
 	<div class="main-content" ng-app="todo">
 		<div ng-controller="homeController">
-			
+
 			<div class="container">
 				<div class="col-md-12">
 					<!-- <span class="page-title">My Todos</span> -->
-					<button type="button" class="btn btn-primary pull-right" ng-click="addTodo()">Add new Todo</button>
+					<button type="button" class="btn btn-primary" ng-click="addTodo()">Add new Todo</button>
 				</div>
 
-				<div class="item-container">
-					<div class="item-container col-md-4" ng-repeat="todo in todos">
-						<div class="item-list">
-							{{todo.title}}  <span class="badge badge-warning">{{todo.status}}</span>
-						</div>	
+				<div class="row">
+					<div class="col-md-8">
+					<div class="item-container col-md-6" ng-repeat="todo in todos">
+						<div class="item-list" ng-click="getTaskDetails($index)">
+							{{todo.title}}  <span class="badge" ng-class="{'badge-warning': todo.status =='pending','badge-success': todo.status =='done','badge-primary': todo.status =='in-progress'}">{{todo.status}}</span>
+						
+						<button type="button" class="close" aria-label="Close" ng-click="removeTask($index)">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+
+
 					</div>
 				</div>
+
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body">
+						    <h5 class="card-title">{{taskDetails.title}}</h5>
+						    <p class="card-text">{{taskDetails.desc}}</p>
+						    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+						 </div>
+					</div>
+				</div>
+				</div>
+
 			</div>
 
 
