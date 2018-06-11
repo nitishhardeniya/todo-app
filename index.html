@@ -16,46 +16,64 @@
 
 	<ul class="nav justify-content-center">
 	  <li class="nav-item">
-	    <a class="nav-link active" href="#">Todo</a>
+	    <a class="nav-link active" href="#">Todo App</a>
 	  </li>
-	  <li class="nav-item">
+	  <!-- <li class="nav-item">
 	    <a class="nav-link" href="#">Done</a>
-	  </li>
+	  </li> -->
 	</ul>
 
 	<div class="main-content" ng-app="todo">
 		<div ng-controller="homeController">
 
 			<div class="container">
-				<div class="col-md-12">
-					<!-- <span class="page-title">My Todos</span> -->
-					<button type="button" class="btn btn-primary" ng-click="addTodo()">Add new Todo</button>
-				</div>
+				<form name="createTask" class="row form-group">
+		            <div class="col-md">
+		                <label>Title</label>
+		                <input type="text" class="form-control" name="title" ng-model="taskData.title">
+		            </div>
 
-				<div class="row">
-					<div class="col-md-8">
-					<div class="item-container col-md-6" ng-repeat="todo in todos">
-						<div class="item-list" ng-click="getTaskDetails($index)">
-							{{todo.title}}  <span class="badge" ng-class="{'badge-warning': todo.status =='pending','badge-success': todo.status =='done','badge-primary': todo.status =='in-progress'}">{{todo.status}}</span>
-						
-						<button type="button" class="close" aria-label="Close" ng-click="removeTask($index)">
-						  <span aria-hidden="true">&times;</span>
-						</button>
+		            <div class="col-md">
+		                <label>Description</label>
+		                <input type="textarea" class="form-control" name="title" ng-model="taskData.desc">
+		            </div>
+
+		            <div class="col-md">
+		                <label>Due date</label>
+		                <!-- <div uib-datepicker ng-model="taskData.dueDate" class="well well-sm" datepicker-options="options"></div> -->
+		                <input type="date" class="form-control" name="dueDate" ng-model="taskData.dueDate">
+		            </div>
+		        	
+		        	<div class="col-md">
+		        		<button ng-if="taskData" type="button" class="btn btn-primary" ng-click="addTodo()">Add new Todo</button>	
+		        	</div>
+
+		        </form>
+
+				<div class="row no-gutters">
+					<div class="col-md-8 no-gutters">
+						<div class="item-container col-md-6" ng-repeat="todo in todos">
+							<div class="item-list" ng-click="getTaskDetails($index)">
+								{{todo.title}}  <span class="badge" ng-class="{'badge-warning': todo.status =='pending','badge-success': todo.status =='done','badge-primary': todo.status =='in-progress'}">{{todo.status}}</span>
+							
+							<button type="button" class="close" aria-label="Close" ng-click="removeTask($index)">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+							</div>
+
 						</div>
-
-
 					</div>
-				</div>
 
-				<div class="col-md-4">
-					<div class="card">
-						<div class="card-body">
-						    <h5 class="card-title">{{taskDetails.title}}</h5>
-						    <p class="card-text">{{taskDetails.desc}}</p>
-						    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-						 </div>
+					<div class="col-md-4">
+						<div class="card" ng-if="taskDetails">
+							<div class="card-body">
+							    <h5 class="card-title">{{taskDetails.title}}</h5>
+							    <p class="card-text">{{taskDetails.desc}}</p>
+							    Assigned to: {{taskDetails.assignedTo}}
+							    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+							 </div>
+						</div>
 					</div>
-				</div>
 				</div>
 
 			</div>
@@ -65,11 +83,11 @@
 
 	</div>
 
-<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-<script type="text/javascript" src="scripts/app.js"></script>
-<script type="text/javascript" src="scripts/controllers/homeController.js"></script>
-<script type="text/javascript" src="scripts/services/todoService.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/controllers/homeController.js"></script>
+	<script type="text/javascript" src="scripts/services/todoService.js"></script>
 </body>
 </html>
