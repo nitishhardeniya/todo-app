@@ -19,16 +19,19 @@ todo.controller('homeController',function($scope,$uibModal,todoService){
 		};*/
 
 		$scope.todos.push({"id":$scope.todos.length+1,"title":$scope.taskData.title,"status":"pending","desc":$scope.taskData.desc,"dueDate":$scope.taskData.dueDate,"assignedTo":"Nitish"});
-		$scope.taskData = {};
+		$scope.taskData = {
+			dueDate:new Date()
+		};
 	};
 
 	$scope.closeModal = function(){
 		modalInstance.dismiss('cancel');
 	};
 
-	$scope.todos = [{"id":"1","title":"Create page UI","status":"pending","desc":"Short dec","assignedTo":"Nitish"},
-					{"id":"2","title":"Style the page","status":"in-progress","desc":"Short dec","assignedTo":"Nitish"},
-					{"id":"3","title":"Test the functionality","status":"pending","desc":"Short dec","assignedTo":"Nitish"}];
+	//Pre-loaded dummy data
+	$scope.todos = [{"id":"1","title":"Create page UI","status":"pending","desc":"Short dec sdfdsfdsj dsjfkdsj kfj ds","dueDate":new Date(),"assignedTo":"Nitish"},
+					{"id":"2","title":"Style the page","status":"in-progress","desc":"Short dec sjksdjfkjds ","dueDate":new Date(),"assignedTo":"Nitish"},
+					{"id":"3","title":"Test the functionality","status":"pending","desc":"Short dec pplplpasldplasd ","dueDate":new Date(),"assignedTo":"Nitish"}];
 
 	$scope.removeTask = function(taskIndex){
 		$scope.todos.splice(taskIndex,1);

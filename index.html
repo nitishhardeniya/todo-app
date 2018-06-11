@@ -68,9 +68,23 @@
 						<div class="card" ng-if="taskDetails">
 							<div class="card-body">
 							    <h5 class="card-title">{{taskDetails.title}}</h5>
-							    <p class="card-text">{{taskDetails.desc}}</p>
-							    Assigned to: {{taskDetails.assignedTo}}
-							    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+							    
+							    <div class="col-md">
+							    	<label class="font-weight-light">Description:</label>
+							    	<span>{{taskDetails.desc}}</span>	
+							    </div>
+
+							    <div class="col-md">
+							    	<label class="font-weight-light">Due date:</label>
+							    	<span>{{taskDetails.dueDate | date}}</span>
+							    </div>
+
+							    <div class="col-md">
+							    	<label class="font-weight-light">Assigned to:</label> 
+							    	<span>{{taskDetails.assignedTo}}</span>
+							    	<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+							    </div>
+
 							 </div>
 						</div>
 					</div>
