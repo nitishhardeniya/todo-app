@@ -20,7 +20,7 @@ todo.controller('homeController',function($scope,todoService){
 	//Pre-loaded dummy data
 	$scope.todos = [];
 	var todoLS = JSON.parse(localStorage.getItem("todosMaster"));
-	if(todoLS.length==0){
+	if(todoLS != null && todoLS.length==0){
 		console.log('setter');
 		$scope.todos = todoService.getPreloadedData();
 		localStorage.setItem("todosMaster", JSON.stringify($scope.todos));
