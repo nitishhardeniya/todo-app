@@ -61,10 +61,10 @@
 					<div class="col-md-8 no-gutters">
 						<div class="item-container col-md-6" ng-repeat="todo in todos track by $index">
 							<div class="item-list" ng-click="getTaskDetails($index)">
-								<span ng-class="{'text-underline':todo.status=='done'}">{{todo.title}}</span>
+								<span ng-class="{'text-underline':todo.status=='done'}">{{todo.title}}</span><br>
 								<span class="badge" ng-class="{'badge-warning': todo.status =='pending','badge-success': todo.status =='done','badge-primary': todo.status =='in-progress'}">{{todo.status}}</span>
 
-								<a href="" ng-click="updateStatus($index)">Update</a>
+								<a href="" ng-show="todo.status !='done'" ng-click="updateStatus($index)">Update</a>
 							
 								<button type="button" class="close" aria-label="Close" ng-click="removeTask($index)">
 							  		<span aria-hidden="true">&times;</span>

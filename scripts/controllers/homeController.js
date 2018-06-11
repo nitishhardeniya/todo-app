@@ -34,7 +34,11 @@ todo.controller('homeController',function($scope,todoService){
 	};
 
 	$scope.updateStatus = function(taskIndex){
-		$scope.todos[taskIndex].status = "done";
+		if($scope.todos[taskIndex].status == "pending"){
+			$scope.todos[taskIndex].status = "in-progress";
+		}else if($scope.todos[taskIndex].status == "in-progress"){
+			$scope.todos[taskIndex].status = "done";
+		}
 	};
 
 	$scope.getTaskDetails = function(taskIndex){
