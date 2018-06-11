@@ -43,9 +43,16 @@
 		                <!-- <div uib-datepicker ng-model="taskData.dueDate" class="well well-sm" datepicker-options="options"></div> -->
 		                <input type="date" class="form-control" name="dueDate" ng-model="taskData.dueDate">
 		            </div>
+
+		            <div class="col-md">
+		            	<label>Assign to:</label>
+		            	<select class="form-control" ng-model="taskData.assignedTo">
+						  <option ng-repeat="user in users" value="{{user.name}}">{{user.name}}</option>
+						</select>
+		            </div>
 		        	
 		        	<div class="col-md" style="line-height: 6">
-		        		<button ng-if="taskData" type="button" class="btn btn-primary" ng-click="addTodo()">Add new Todo</button>	
+		        		<button ng-disabled="createTask.$invalid" type="button" class="btn btn-primary" ng-click="addTodo()">Add new Todo</button>	
 		        	</div>
 
 		        </form>
@@ -54,7 +61,10 @@
 					<div class="col-md-8 no-gutters">
 						<div class="item-container col-md-6" ng-repeat="todo in todos">
 							<div class="item-list" ng-click="getTaskDetails($index)">
-								{{todo.title}}  <span class="badge" ng-class="{'badge-warning': todo.status =='pending','badge-success': todo.status =='done','badge-primary': todo.status =='in-progress'}">{{todo.status}}</span>
+								<span ng-class="{'text-underline':todo.status=='done'}">{{todo.title}}</span>
+								<span class="badge" ng-class="{'badge-warning': todo.status =='pending','badge-success': todo.status =='done','badge-primary': todo.status =='in-progress'}">{{todo.status}}</span>
+
+								<a href="" ng-click="updateStatus($index)">Update</a>
 							
 								<button type="button" class="close" aria-label="Close" ng-click="removeTask($index)">
 							  		<span aria-hidden="true">&times;</span>

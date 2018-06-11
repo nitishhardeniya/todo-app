@@ -10,3 +10,7 @@
     background-color: #ffffff;
     cursor: pointer;
 }
+
+.text-underline {
+	text-decoration:line-through;
+}
