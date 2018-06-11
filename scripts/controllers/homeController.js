@@ -9,6 +9,7 @@ todo.controller('homeController',function($scope,todoService){
 	$scope.addTodo = function(){
 		
 		$scope.todos.push({"id":$scope.todos.length+1,"title":$scope.taskData.title,"status":"pending","desc":$scope.taskData.desc,"dueDate":$scope.taskData.dueDate,"assignedTo":$scope.taskData.assignedTo});
+		localStorage.setItem("todosMaster", JSON.stringify($scope.todos));
 		$scope.taskData = {
 			dueDate:new Date()
 		};
@@ -18,13 +19,14 @@ todo.controller('homeController',function($scope,todoService){
 
 	//Pre-loaded dummy data
 	$scope.todos = [];
-	if($scope.todos.length==0){
+	var todoLS = JSON.parse(localStorage.getItem("todosMaster"));
+	if(todoLS.length==0){
 		console.log('setter');
 		$scope.todos = todoService.getPreloadedData();
-		localStorage.setItem("todosMaster", $scope.todos);
+		localStorage.setItem("todosMaster", JSON.stringify($scope.todos));
 	}else{
 		console.log('getter');
-		$scope.todos = localStorage.getItem("todosMaster");
+		$scope.todos = JSON.parse(localStorage.getItem("todosMaster"));
 	}
 	
 	$scope.removeTask = function(taskIndex){

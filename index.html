@@ -56,10 +56,10 @@
 		        	</div>
 
 		        </form>
-
+		        
 				<div class="row no-gutters">
 					<div class="col-md-8 no-gutters">
-						<div class="item-container col-md-6" ng-repeat="todo in todos">
+						<div class="item-container col-md-6" ng-repeat="todo in todos track by $index">
 							<div class="item-list" ng-click="getTaskDetails($index)">
 								<span ng-class="{'text-underline':todo.status=='done'}">{{todo.title}}</span>
 								<span class="badge" ng-class="{'badge-warning': todo.status =='pending','badge-success': todo.status =='done','badge-primary': todo.status =='in-progress'}">{{todo.status}}</span>
