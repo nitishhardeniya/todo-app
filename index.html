@@ -56,7 +56,7 @@
 		        	</div>
 
 		        </form>
-		        
+
 				<div class="row no-gutters">
 					<div class="col-md-8 no-gutters">
 						<div class="item-container col-md-6" ng-repeat="todo in todos track by $index">
@@ -74,7 +74,7 @@
 					</div>
 
 					<div class="col-md-4">
-						<div class="card" ng-if="taskDetails">
+						<div class="card" ng-if="taskDetails && todos.length>0">
 							<div class="card-body">
 							    <h5 class="card-title">{{taskDetails.title}}</h5>
 							    
