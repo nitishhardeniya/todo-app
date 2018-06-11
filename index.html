@@ -30,12 +30,12 @@
 				<form name="createTask" class="row form-group">
 		            <div class="col-md">
 		                <label>Title</label>
-		                <input type="text" class="form-control" name="title" ng-model="taskData.title">
+		                <input type="text" required maxlength="50" class="form-control" name="title" ng-model="taskData.title">
 		            </div>
 
 		            <div class="col-md">
 		                <label>Description</label>
-		                <input type="textarea" class="form-control" name="title" ng-model="taskData.desc">
+		                <input type="textarea" required maxlength="250" class="form-control" name="title" ng-model="taskData.desc">
 		            </div>
 
 		            <div class="col-md">
@@ -44,7 +44,7 @@
 		                <input type="date" class="form-control" name="dueDate" ng-model="taskData.dueDate">
 		            </div>
 		        	
-		        	<div class="col-md">
+		        	<div class="col-md" style="line-height: 6">
 		        		<button ng-if="taskData" type="button" class="btn btn-primary" ng-click="addTodo()">Add new Todo</button>	
 		        	</div>
 
@@ -56,11 +56,10 @@
 							<div class="item-list" ng-click="getTaskDetails($index)">
 								{{todo.title}}  <span class="badge" ng-class="{'badge-warning': todo.status =='pending','badge-success': todo.status =='done','badge-primary': todo.status =='in-progress'}">{{todo.status}}</span>
 							
-							<button type="button" class="close" aria-label="Close" ng-click="removeTask($index)">
-							  <span aria-hidden="true">&times;</span>
-							</button>
+								<button type="button" class="close" aria-label="Close" ng-click="removeTask($index)">
+							  		<span aria-hidden="true">&times;</span>
+								</button>
 							</div>
-
 						</div>
 					</div>
 
