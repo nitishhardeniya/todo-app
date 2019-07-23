@@ -6,9 +6,11 @@ todo.controller('homeController',function($scope,todoService){
 
 	var modalInstance;
 	var modalScope = $scope.$new();
+	$scope.todos = [];
 	$scope.addTodo = function(){
-		
-		$scope.todos.push({"id":$scope.todos.length+1,"title":$scope.taskData.title,"status":"pending","desc":$scope.taskData.desc,"dueDate":$scope.taskData.dueDate,"assignedTo":$scope.taskData.assignedTo});
+		if($scope.todos){
+			$scope.todos.push({"id":$scope.todos.length+1,"title":$scope.taskData.title,"status":"pending","desc":$scope.taskData.desc,"dueDate":$scope.taskData.dueDate,"assignedTo":$scope.taskData.assignedTo});
+		}		
 		localStorage.setItem("todosMaster", JSON.stringify($scope.todos));
 		$scope.taskData = {
 			dueDate:new Date()
@@ -18,7 +20,6 @@ todo.controller('homeController',function($scope,todoService){
 	$scope.users = todoService.getUserList();
 
 	//Pre-loaded dummy data
-	$scope.todos = [];
 	var todoLS = JSON.parse(localStorage.getItem("todosMaster"));
 	if(todoLS != null && todoLS.length==0){
 		console.log('setter');
